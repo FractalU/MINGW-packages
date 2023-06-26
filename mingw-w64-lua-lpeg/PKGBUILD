@@ -7,7 +7,7 @@ pkgbase=mingw-w64-lua-${_realname}
 pkgname=("${MINGW_PACKAGE_PREFIX}-lua-${_realname}"
          "${MINGW_PACKAGE_PREFIX}-lua51-${_realname}")
 pkgver=1.0.2
-pkgrel=2
+pkgrel=3
 arch=('any')
 mingw_arch=('mingw32' 'mingw64' 'ucrt64' 'clang64' 'clangarm64' 'clang32')
 url='http://www.inf.puc-rio.br/~roberto/lpeg/'
@@ -20,7 +20,7 @@ source=("http://www.inf.puc-rio.br/~roberto/${_realname}/${_realname}-${pkgver}.
         "lpeg-0.12-makefile.patch"
         "LICENSE")
 sha256sums=('48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
-            '3f6c283041a747a53cb2132f80a0a239b9b6fa16beab24c8a076d00178a3b776'
+            '3b9c9a46c7dea1e3ca8c6f93114d0d0504c67e01b6b65ec71ec15439eef52184'
             '6be7688c9c648e7c7cde693081be938c869a10aa4de09fe0a4c4c1d66b3cf03d')
 
 prepare() {
@@ -36,10 +36,10 @@ prepare() {
 
 build() {
   cd "${srcdir}/build-${CARCH}"
-  make LUADIR=${MINGW_PREFIX}/include LDFLAGS="$(pkg-config lua --libs)"
+  make LUADIR=$(pkg-config lua --variable=includedir) LDFLAGS="$(pkg-config lua --libs)"
 
   cd "${srcdir}/build-51-${CARCH}"
-  make LUADIR=${MINGW_PREFIX}/include/lua5.1 LDFLAGS="$(pkg-config lua5.1 --libs)"
+  make LUADIR=$(pkg-config lua5.1 --variable=includedir) LDFLAGS="$(pkg-config lua5.1 --libs)"
 }
 
 check() {
