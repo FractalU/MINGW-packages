@@ -20,7 +20,7 @@ source=("http://www.inf.puc-rio.br/~roberto/${_realname}/${_realname}-${pkgver}.
         "lpeg-0.12-makefile.patch"
         "LICENSE")
 sha256sums=('48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
-            '3b9c9a46c7dea1e3ca8c6f93114d0d0504c67e01b6b65ec71ec15439eef52184'
+            '66adbc6be83f92f1f08e2ca3bc2cd286d4d3942c2bd79f704251e60b6e0d3c01'
             '6be7688c9c648e7c7cde693081be938c869a10aa4de09fe0a4c4c1d66b3cf03d')
 
 prepare() {

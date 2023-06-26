@@ -9,18 +9,20 @@
  # COPT = -g
  
  CWARNS = -Wall -Wextra -pedantic \
-@@ -22,7 +22,10 @@
+@@ -22,8 +22,11 @@
  # -Wunreachable-code \
  
  
 -CFLAGS = $(CWARNS) $(COPT) -std=c99 -I$(LUADIR) -fPIC
+-CC = gcc
 +ifdef DLLFLAGS
 +	HOST_CFLAGS := $(CFLAGS)
 +	CFLAGS += $(CWARNS) $(COPT) -std=c99 -I$(LUADIR) -fPIC
 +endif
- CC = gcc
++#CC = gcc
  
  FILES = lpvm.o lpcap.o lptree.o lpcode.o lpprint.o
+ 
 @@ -36,7 +36,7 @@
  	$(MAKE) lpeg.so "DLLFLAGS = -bundle -undefined dynamic_lookup"
  
