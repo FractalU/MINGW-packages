@@ -18,7 +18,7 @@ makedepends=("${MINGW_PACKAGE_PREFIX}-lua"
              "${MINGW_PACKAGE_PREFIX}-pkg-config")
 source=("http://www.inf.puc-rio.br/~roberto/${_realname}/${_realname}-${pkgver}.tar.gz"
         #${_realname}-${pkgver}.tar.gz::https://github.com/lua/lpeg/archive/${pkgver}.tar.gz
-        "lpeg-0.12-makefile.patch"
+        "lpeg-1.0.2-makefile.patch"
         "LICENSE")
 sha256sums=('48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
             '66adbc6be83f92f1f08e2ca3bc2cd286d4d3942c2bd79f704251e60b6e0d3c01'
@@ -26,7 +26,7 @@ sha256sums=('48d66576051b6c78388faad09b70493093264588fcd0f258ddaab1cdd4a15ffe'
 
 prepare() {
   cd "${_realname}-${pkgver}"
-  patch -p1 -i "${srcdir}/lpeg-0.12-makefile.patch"
+  patch -p1 -i "${srcdir}/lpeg-1.0.2-makefile.patch"
   sed -i 's/lpeg.so/lpeg.dll/' makefile
 
   mkdir -p "${srcdir}/build-${CARCH}" "${srcdir}/build-51-${CARCH}"
